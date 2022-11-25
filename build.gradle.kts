@@ -28,6 +28,8 @@ kotlin {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation("org.xerial:sqlite-jdbc:3.36.0.3")
+                implementation("com.squareup.retrofit2:retrofit:2.9.0")
+                implementation("com.squareup.retrofit2:converter-gson:2.9.0")
                 implementation(files("lib/ComposeLessonsLib-jvm-1.0-SNAPSHOT.jar"))
             }
         }

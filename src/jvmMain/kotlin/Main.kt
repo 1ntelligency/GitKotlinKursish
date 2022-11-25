@@ -47,6 +47,8 @@ fun main() = mainUI { lesson, exit ->
         Lessons.UiDrawer -> LessonDrawer(exit)
         Lessons.UiTest -> LessonUI(exit)
 
+        Lessons.ApiCities -> LessonCities()
+        Lessons.ApiRegions -> LessonRegions()
         //else -> {}
     }
 }
