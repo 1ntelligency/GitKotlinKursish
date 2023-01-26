@@ -49,6 +49,6 @@ fun main() = mainUI { lesson, exit ->
 
         Lessons.ApiCities -> LessonCities()
         Lessons.ApiRegions -> LessonRegions()
-        //else -> {}
+        else -> {}
     }
 }
