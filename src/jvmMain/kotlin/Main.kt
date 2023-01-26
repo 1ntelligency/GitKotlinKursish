@@ -49,6 +49,21 @@ fun main() = mainUI { lesson, exit ->
 
         Lessons.ApiCities -> LessonCities()
         Lessons.ApiRegions -> LessonRegions()
-        else -> {}
+        Lessons.ApiRegionCities -> LessonRegionCities()
+        Lessons.ApiWeatherCities -> LessonWeatherCities()
+        Lessons.ApiSearchPrice -> LessonSearchPrice()
+        Lessons.ApiAlphaPages -> LessonAlphaPages()
+        Lessons.ApiNumberPages -> LessonNumberPages()
+        Lessons.ApiInfinity -> LessonInfinity()
+        Lessons.ApiGenres -> LessonGenres()
+        Lessons.ApiSearch -> LessonSearch()
+        Lessons.ApiLikes -> LessonLikes()
+        Lessons.ApiRegister -> LessonRegistration()
+        Lessons.ApiLogin -> LessonLogin()
+        Lessons.ApiInbox -> LessonInbox()
+        Lessons.ApiDelete -> LessonDelete()
+        Lessons.ApiSend -> LessonSend()
+        Lessons.ApiSent -> LessonSent()
+        //else -> {}
     }
 }
