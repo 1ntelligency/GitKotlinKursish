@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LessonWeatherCities() {
-
+// Далее описания заданий пока не готовы, ждите обновления. Используйте Git: ↙ на панели инструментов для обновления
 }
 
 /*
