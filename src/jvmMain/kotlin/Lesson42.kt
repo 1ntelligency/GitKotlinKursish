@@ -30,6 +30,8 @@ import ui.verticalScrollHelper
 import java.text.DecimalFormat
 
 private interface WeatherApi {
+    // Данные предоставляются сервисом https://openweathermap.org/ и за их точность автор урока ответственности не несёт.
+
     // Самостоятельно опишите функцию cities(), производящую GET-запрос по адресу https://mad.lrmk.ru/kladr/city
     // и возвращающую список городов, используя класс City (этот класс создайте сами, он состоит из двух строковых
     // значений: type (может быть null) и city (не может быть null))
