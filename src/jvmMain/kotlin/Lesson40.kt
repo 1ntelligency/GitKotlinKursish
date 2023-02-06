@@ -23,7 +23,7 @@ private interface RegionApi {
     // и возвращающую список регионов, используя класс Region
 
     companion object {
-        fun getApi() = "попробуйте по памяти построить интерфейс RegionApi для API сервера https://mad.lrmk.ru/kladr"
+        fun getApi() = "попробуйте по памяти построить интерфейс RegionApi для API сервера https://mad.lrmk.ru/kladr/"
     }
 }
 
