@@ -55,7 +55,7 @@ fun main() = mainUI { lesson, exit ->
         Lessons.ApiAlphaPages -> LessonAlphaPages()
         Lessons.ApiNumberPages -> LessonNumberPages()
         Lessons.ApiInfinity -> LessonInfinity()
-        Lessons.ApiGenres -> LessonGenres()
+        Lessons.ApiGenres -> LessonGenres(exit)
         Lessons.ApiSearch -> LessonSearch()
         Lessons.ApiLikes -> LessonLikes()
         Lessons.ApiRegister -> LessonRegistration()
