@@ -13,7 +13,7 @@ fun LessonExtAction(exit: ()->Unit) = Box(contentAlignment = Alignment.BottomEnd
 }
 
 /*
-    Почти то же самое, элемент ExtendedFloatingActionButton({текст}, действие) { значок }
+    Почти то же самое, элемент ExtendedFloatingActionButton({ текст }, действие, icon = { значок })
     Первый параметр - блок {}, внутри которого текстовый элемент надписи,
     Второй - действие по нажатию (exit),
     Третий - блок {}, внутри которого значок закрытия
