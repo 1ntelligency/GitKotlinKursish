@@ -1,13 +1,39 @@
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import data.lessonsLogin
+import data.lessonsPassword
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
+import ui.verticalScrollHelper
+
+private interface OutboxApi {
+    // Создайте функцию outbox для получения списка отправленных сообщений по адресу https://mad.lrmk.ru/mail/outbox,
+    // все параметры и структура возвращаемого значения в точности как в задании №52.
+    // Создайте также по памяти объект-компаньон и функцию getApi() для этого интерфейса.
+
+}
 
 @Composable
 fun LessonSent() {
@@ -15,5 +41,16 @@ fun LessonSent() {
 }
 
 /*
-    Далее описания заданий пока не готовы, ждите обновления. Используйте Git: ↙ на панели инструментов для обновления
+    Получите список отправленных сообщений messages, последнее отправленное должно идти в начале списка.
+    Объявите переменную message, предназначенную для хранения одного такого сообщения, начальное значение - null.
+
+    Отобразите список сообщений, вместо карточек - clickable-столбец с отступами на 5.
+    После этого столбца - AnimatedVisibility, видимый, когда переменная message равна текущему сообщению, анимации -
+    увеличение/уменьшение по вертикали: expandVertically{0} и shrinkVertically{0}.
+    Внутри - SelectionContainer с текстом сообщения (отступы на 5). Размеры шрифтов - 12 и 14. Цвета - обычный и серый.
+
+    Щелчок по сообщению должен его сворачивать/разворачивать (управляется переменной message), напишите самостоятельно.
+
+    ---
+    Далее описания заданий пока не готовы, ждите обновления. Используйте Git: ↙ на панели инструментов для обновления...
 */
