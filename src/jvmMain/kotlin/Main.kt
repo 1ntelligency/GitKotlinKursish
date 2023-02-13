@@ -61,7 +61,7 @@ fun main() = mainUI { lesson, exit ->
         Lessons.ApiRegister -> LessonRegistration()
         Lessons.ApiLogin -> LessonLogin()
         Lessons.ApiInbox -> LessonInbox( remember { users.map { it.photo } } )
-        Lessons.ApiDelete -> LessonDelete()
+        Lessons.ApiDelete -> LessonDelete( remember { users.map { it.photo } } )
         Lessons.ApiSend -> LessonSend()
         Lessons.ApiSent -> LessonSent()
         //else -> {}

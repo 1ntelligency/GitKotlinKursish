@@ -37,7 +37,7 @@ import retrofit2.http.*
 import ui.BackHandler
 import ui.verticalScrollHelper
 
-interface InboxApi {
+private interface InboxApi {
     @FormUrlEncoded    // Поскольку на сервер передаётся пароль, то это POST-запрос. Кодирование как в веб-форме.
     @POST("inbox")  // для получения входящих сообщений указываются логин и пароль пользователя:
     suspend fun inbox(@Field("login") login: String?, @Field("password") password: String?): Messages
@@ -80,6 +80,8 @@ fun LessonInbox(avatars: List<String>) {
     InboxApi.Message, которая может быть null, начальное значение null. В ней будем сохранять выбранное пользователем
     сообщение, null означает, что все сообщения закрыты. Сразу же оформите BackHandler для этой переменной, чтобы кнопка
     "назад" закрывала сообщение.
+
+    Элементу Row внутри карточки сообщения назначьте clickable, присваивающий всё текущее сообщение переменной message.
 
     Весь наш ленивый столбец теперь поместите внутрь Box, а после столбца, но внутри этого же бокса добавьте элемент
     AnimatedVisibility, чтобы он открывался прямо поверх нашего списка сообщений. Элемент виден, когда message не null.
