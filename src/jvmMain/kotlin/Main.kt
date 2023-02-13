@@ -60,7 +60,7 @@ fun main() = mainUI { lesson, exit ->
         Lessons.ApiLikes -> LessonLikes()
         Lessons.ApiRegister -> LessonRegistration()
         Lessons.ApiLogin -> LessonLogin()
-        Lessons.ApiInbox -> LessonInbox()
+        Lessons.ApiInbox -> LessonInbox( remember { users.map { it.photo } } )
         Lessons.ApiDelete -> LessonDelete()
         Lessons.ApiSend -> LessonSend()
         Lessons.ApiSent -> LessonSent()
