@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -70,7 +69,7 @@ fun LessonReviews(reviews: List<Pair<User, String>>) {
 
         Внутри этого объекта создайте карточку на всю ширину экрана (отступы на 5, закругление и возвышение на 10),
             внутри неё - столбец с отступами на 10,
-                внутри столбца - два текста, отзыв и ФИО пользователя (серый курсив, выравнивание по правому краю).
+                внутри столбца - два текста, отзыв и данные пользователя (серый курсив, выравнивание по правому краю).
             Столбцу придайте модификатор clickable, обнуляющий выбор пользователя (open = null).
 
     Чтобы прозрачность карточек пользователей менялась не рывком, а плавно, попробуйте вместо
