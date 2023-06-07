@@ -1,7 +1,6 @@
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import retrofit2.http.*
-import ui.verticalScrollHelper
+import ui.LazyColumn
 
 private interface MovieApi {
     /*
@@ -62,13 +61,13 @@ fun LessonInfinity() {
     В обычном столбце поместите ленивый столбец с весом 1 для нашего списка фильмов и BottomAppBar для отображения
     статистики и названия сайта.
     Фильм отображается на карточке (отступы 5, закругление и возвышение 10), внутри - столбец с отступами на 10.
-    В нём: название, центрированный горизонтальный ряд с вертикальным отступом на 10 и, ниже - текст описания фильма
+    В нём: название, центрированный горизонтальный ряд с вертикальным отступом на 5 и, ниже - текст описания фильма
     тёмно-серым цветом, размером шрифта 12, с выравниванием по ширине.
     В горизонтальном ряду: значок Favorite (правый отступ 5), рейтинг (вес 1), значок DateRange (правый отступ 5) и
     год выхода (можете вырезать первые 4 цифры года функцией .substringBefore('-')), все элементы в ряду - серого цвета.
 
     В этот раз обязательно создайте переменную state = rememberLazyListState() и примените её к ленивому списку - она
-    будет нужна не только для помощника прокрутки verticalScrollHelper, но и понадобится для загрузки новых страниц.
+    понадобится для загрузки новых страниц.
 
     Создайте также целую переменную page - номер страницы, по умолчанию = 1.
 

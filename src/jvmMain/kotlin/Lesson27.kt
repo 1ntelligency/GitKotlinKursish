@@ -3,9 +3,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -17,7 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import lessons.User
-import ui.horizontalScrollHelper
+import ui.LazyHorizontalGrid
 
 @Composable
 fun LessonHGrid(users: List<User>) {
@@ -39,11 +37,4 @@ fun LessonHGrid(users: List<User>) {
             кликабельно - ставится первым в очереди, чтобы визуальный эффект охватывал всю карточку вместе с полями,
             отступы на 10,
             обрезка по окружности.
-
-    Примечание:
-    чтобы задействовать здесь горизонтальную прокрутку списка колесом и "перетаскиванием", как в телефоне, сделайте так:
-        в самом начале функции создайте переменную state = rememberLazyGridState()
-        вторым параметром ленивой сетки укажите модификатор horizontalScrollHelper(state)
-        третьим параметром укажите сам state. Можно также написать state = state
-    Модификатор horizontalScrollHelper не является стандартным для Compose, он используется только в этом проекте.
 */

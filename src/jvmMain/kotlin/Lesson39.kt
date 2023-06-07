@@ -1,5 +1,4 @@
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -9,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
+import ui.LazyColumn
 
 //  Начиная с этого задания нам будет необходимо подключение к API сервера мастерской М4.
 //  Вне мастерской эти задания выполнить и проверить не получится.

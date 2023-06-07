@@ -1,7 +1,7 @@
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -14,6 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
+import ui.LazyColumn
 
 private interface RegionApi {
     // класс для получения данных с сервера: перечень регионов
@@ -27,6 +28,7 @@ private interface RegionApi {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LessonRegions() {
 
@@ -48,6 +50,9 @@ fun LessonRegions() {
     Кнопка должна удалять текущий элемент списка: regions.remove(it) или просто regions -= it
 
     Важно: в редактируемом списке очень желательно определить ключ, по которому Compose будет отличать строки списка.
-    Нашим ключом будет само название региона. Тогда функцию items для нашего ленивого столбца нужно оформить так:
+        Нашим ключом будет само название региона. Тогда функцию items для нашего ленивого столбца нужно оформить так:
     items(regions, key = { it.name_with_type }) { ... }
+
+    В качестве бонуса добавьте модификатор анимации animateItemPlacement элементу внутри items, чтобы обеспечить
+        плавное удаление строк
 */

@@ -2,9 +2,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -15,7 +13,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ui.horizontalScrollHelper
+import lessons.fruits
+import ui.LazyRow
 
 @Composable
 fun LessonLongRow(fruits: List<Pair<String, String>>) {
@@ -24,7 +23,7 @@ fun LessonLongRow(fruits: List<Pair<String, String>>) {
 
 /*
     Всё аналогично предыдущему.
-    Но вместо "ленивого" столбца - "ленивый" ряд - LazyRow, параметры прокрутки и центрирования пока не нужны.
+    Но вместо "ленивого" столбца - "ленивый" ряд - LazyRow, параметры прокрутки и центрирования сейчас не нужны.
     Внутри items - столбец с горизонтальным центрированием,
         внутри столбца - карточка и текстовая подпись серого цвета, размер шрифта 14.
         Придайте карточке модификаторы:
@@ -39,11 +38,4 @@ fun LessonLongRow(fruits: List<Pair<String, String>>) {
     items(fruits) { (picture, name) -> ... }
     в этом случае ресурс картинки будет просто picture, а не it.first, а текст подписи - просто name, а не it.second,
     это возможно, так как каждый элемент списка фруктов - это пара значений, и её можно таким образом разбить.
-
-    Примечание:
-    чтобы задействовать здесь горизонтальную прокрутку списка колесом и "перетаскиванием", как в телефоне, сделайте так:
-        в самом начале функции создайте переменную state = rememberLazyListState()
-        первым параметром ленивого ряда укажите модификатор horizontalScrollHelper(state)
-        вторым параметром укажите сам state. Можно также написать state = state
-    Модификатор horizontalScrollHelper не является стандартным для Compose, он используется только в этом проекте.
 */

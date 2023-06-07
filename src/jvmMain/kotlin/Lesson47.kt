@@ -3,7 +3,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,7 +26,7 @@ import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Query
 import ui.BackHandler
-import ui.verticalScrollHelper
+import ui.LazyColumn
 
 
 private interface GenreApi {

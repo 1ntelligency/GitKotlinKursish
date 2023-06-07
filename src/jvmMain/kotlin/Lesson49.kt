@@ -1,5 +1,4 @@
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,7 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import retrofit2.http.*
-import ui.verticalScrollHelper
+import ui.LazyColumn
 
 private interface LikesApi {
     // Создайте функцию movies без параметров, запрашивающую адрес https://mad.lrmk.ru/media и возвращающую все фильмы:

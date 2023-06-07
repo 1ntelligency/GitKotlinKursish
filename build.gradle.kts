@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.example"
-version = "1.0-SNAPSHOT"
+version = "1.5"
 
 repositories {
     google()
@@ -30,7 +30,7 @@ kotlin {
                 implementation("org.xerial:sqlite-jdbc:3.36.0.3")
                 implementation("com.squareup.retrofit2:retrofit:2.9.0")
                 implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-                implementation(files("lib/ComposeLessonsLib-jvm-1.4.jar"))
+                implementation(files("lib/ComposeLessonsLib-jvm-1.5.jar"))
             }
         }
         val jvmTest by getting
@@ -42,7 +42,7 @@ compose.desktop {
         mainClass = "MainKt"
         nativeDistributions {
             modules("java.instrument", "java.sql", "jdk.unsupported")
-            fromFiles("lib/ComposeLessonsLib-jvm-1.4.jar")
+            fromFiles("lib/ComposeLessonsLib-jvm-1.5.jar")
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Lessons"
             packageVersion = "1.0.0"

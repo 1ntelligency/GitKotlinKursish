@@ -1,6 +1,5 @@
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
@@ -26,7 +25,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 import ui.horizontalSnapHelper
-import ui.verticalScrollHelper
+import ui.LazyColumn
 
 private interface MailApi {
     @FormUrlEncoded                             // Функция удаления указанного сообщения в почтовом ящике
@@ -43,6 +42,7 @@ private interface MailApi {
 
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LessonDelete(avatars: List<String>) {
 
@@ -62,7 +62,7 @@ fun LessonDelete(avatars: List<String>) {
 
     Внутри блока items объявите переменную scroll = rememberScrollState(), и добавьте к Row внутри карточки два
     модификатора: .horizontalScroll(scroll).horizontalSnapHelper(scroll) (последний не является стандартным для Compose
-    и используется только в этом проекте).
+    и используется только в этом проекте). Самой карточке придайте модификатор анимации для плавного удаления.
 
     Аватарке добавьте модификатор fillParentMaxWidth(0.18f) (то есть, 18% от ширины ленивого столбца), столбцу с
     заголовками сообщения - аналогично, но 80% ширины. В сумме, 98%, почти вся ширина.

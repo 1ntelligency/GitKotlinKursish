@@ -45,5 +45,5 @@ fun LessonPager(users: List<User>) {
         в самом начале функции создайте переменную state = rememberLazyListState()
         первым параметром ленивого ряда укажите модификатор horizontalSnapHelper(state)
         вторым параметром укажите сам state. Можно также написать state = state
-    Модификатор horizontalSnapHelper не является стандартным для Compose, он используется только в этом проекте.
+    !!! Модификатор horizontalSnapHelper не является стандартным для Compose, он используется только в этом проекте !!!
 */
