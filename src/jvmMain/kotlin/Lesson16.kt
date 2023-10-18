@@ -1,9 +1,10 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.OutlinedButton
-import androidx.compose.material.Text
+import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,7 +22,7 @@ fun LessonBack() {
     var file: String? by remember { mutableStateOf(null) }
     Обратите внимание, что здесь мы явно указали тип данных как "строка текста", которая может быть null (знак ?)
 
-    Содержимое будет внутри центрированного столбца, сначала идёт текст заголовка с отступами на 6
+    Содержимое будет внутри центрированного столбца, сначала идёт текст заголовка с отступами на 4
 
     Ниже поместите конструкцию file?.let { блок1 } ?: блок2
     блок1 отображается если file не null,
