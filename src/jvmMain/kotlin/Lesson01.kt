@@ -20,7 +20,7 @@ fun LessonColumn() {
     второй - модификатор отступа на 8 единиц - Modifier.padding(8.dp)
     третий - цвет текста, например, Color.Red
 
-    Справка:
+    Справка (Ctrl+щелчок):
     https://metanit.com/kotlin/jetpack/3.1.php
     https://metanit.com/kotlin/jetpack/3.2.php
     https://metanit.com/kotlin/jetpack/3.4.php
