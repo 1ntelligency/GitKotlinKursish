@@ -1,11 +1,14 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.OutlinedButton
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 
 
 @Composable
@@ -24,9 +27,11 @@ fun LessonImages() {
 
     Создайте столбец с горизонтальным выравниванием по центру, внутри него - выбранное изображение:
         Image(painterResource(file), "фрукт")
-        а ниже - горизонтальный ряд из трёх OutlinedButton, на каждой с помощью Image изображён свой фрукт,
+        а ниже - горизонтальный ряд из трёх ElevatedButton, на каждой с помощью Image изображён свой фрукт,
             и каждая кнопка при нажатии присваивает переменной file имя своего ресурса
-        Каждой кнопке добавьте модификатор веса 1, чтобы вместе они заняли всю ширину экрана.
+        Каждой ElevatedButton добавьте модификатор веса 1, чтобы вместе они заняли всю ширину экрана,
+            а также модификатор aspectRatio(1f) чтобы их ширина была равна высоте (получатся круги вместо овалов),
+            и модификатор отступа на 3.
 
     Справка:
     https://metanit.com/kotlin/jetpack/6.1.php

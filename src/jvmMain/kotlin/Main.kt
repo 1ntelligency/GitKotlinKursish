@@ -1,5 +1,11 @@
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import lessons.*
 import ui.mainUI
 
@@ -20,7 +26,7 @@ fun main() = mainUI { lesson, exit ->
         Lessons.ControlRegForm -> LessonRegForm(exit)
         Lessons.ControlSliders -> LessonSliders()
         Lessons.ControlProgress -> LessonProgress()
-        Lessons.ControlMenu -> LessonMenu(exit)
+        Lessons.ControlMenu -> Box(Modifier.fillMaxSize()) { LessonMenu(exit) }
         Lessons.ControlBack -> LessonBack()
 
         Lessons.ListSimple -> LessonSimple(colors)
@@ -31,17 +37,17 @@ fun main() = mainUI { lesson, exit ->
         Lessons.ListUsers -> LessonUsers(users)
         Lessons.ListLongList -> LessonLongList(fruits(500))
         Lessons.ListLongRow -> LessonLongRow(fruits(500))
-        Lessons.ListPager -> LessonPager(users)
+        Lessons.ListPager -> Box { LessonPager(users) }
         Lessons.ListVGrid -> LessonVGrid(fruits(500))
         Lessons.ListHGrid -> LessonHGrid(users)
         Lessons.ListChat -> LessonChat(remember { rave() }.collectAsState(listOf()).value)
         Lessons.ListRave -> LessonReviews(users.zip(rave))
         Lessons.ListUserList -> LessonUserList(users)
 
-        Lessons.UiAction -> LessonAction(exit)
-        Lessons.UiExtAction -> LessonExtAction(exit)
-        Lessons.UiTopBar -> LessonTopBar(exit)
-        Lessons.UiBottomBar -> LessonBottomBar(exit)
+        Lessons.UiAction -> Box(Modifier.padding(10.dp), contentAlignment = Alignment.BottomEnd) { LessonAction(exit) }
+        Lessons.UiExtAction -> Box(Modifier.padding(10.dp), contentAlignment = Alignment.BottomEnd) { LessonExtAction(exit) }
+        Lessons.UiTopBar -> Box(Modifier.fillMaxSize()) { LessonTopBar(exit) }
+        Lessons.UiBottomBar -> Box(Modifier.fillMaxSize(), Alignment.BottomStart) { LessonBottomBar(exit) }
         Lessons.UiScaffold -> LessonScaffold(exit)
         Lessons.UiSnackbar -> LessonSnackbar()
         Lessons.UiDrawer -> LessonDrawer(exit)
@@ -66,6 +72,6 @@ fun main() = mainUI { lesson, exit ->
         Lessons.ApiSent -> LessonSent()
 
         Lessons.ExtFriends -> LessonFriends(users)
-        //else -> {}
+        else -> {}
     }
 }

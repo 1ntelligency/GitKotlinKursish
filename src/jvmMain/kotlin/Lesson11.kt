@@ -1,12 +1,18 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,7 +46,7 @@ fun LessonTextFieldTypes() {
         с вертикальным выравниванием по центру, а внутри - значок Icons.Default.Edit и текстовая надпись
 
     Вместо значка никто не запрещает использовать целую картинку: укажите в параметре leadingIcon четвёртого поля ввода
-        элемент Image, отображающий с помощью функции painterResource изображение из ресурса R.drawable.p1
+        элемент Image, отображающий с помощью функции painterResource изображение из ресурса R.drawable.p1 (отступы 4)
 
     Справка:
     https://metanit.com/kotlin/jetpack/4.3.php

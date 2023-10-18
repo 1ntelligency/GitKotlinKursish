@@ -1,6 +1,4 @@
-import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("multiplatform")
@@ -8,7 +6,7 @@ plugins {
 }
 
 group = "com.example"
-version = "1.5"
+version = "1.5.3"
 
 repositories {
     google()
@@ -19,14 +17,16 @@ repositories {
 kotlin {
     jvm {
         compilations.all {
-            kotlinOptions.jvmTarget = "11"
+            kotlinOptions.jvmTarget = "15"
         }
         withJava()
     }
     sourceSets {
         val jvmMain by getting {
             dependencies {
-                implementation(compose.desktop.currentOs)
+                implementation("org.jetbrains.compose.desktop:desktop-jvm-windows-x64:1.5.3")
+                implementation("org.jetbrains.compose.material3:material3-desktop:1.5.3")
+                //implementation(compose.desktop.currentOs)
                 implementation("org.xerial:sqlite-jdbc:3.36.0.3")
                 implementation("com.squareup.retrofit2:retrofit:2.9.0")
                 implementation("com.squareup.retrofit2:converter-gson:2.9.0")
