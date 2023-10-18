@@ -1,8 +1,8 @@
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -31,7 +31,7 @@ fun LessonSwitches() {
     Для IconToggleButton нужно также указать последний параметр {},
         внутри которого будет Icon, отображающий значок "сердце" - Icons.Default.Favorite,
         цвет значка (параметр tint=) определяется условием:
-            ЕСЛИ (НАЖАТО) MaterialTheme.colors.primary ИНАЧЕ Color.Gray
+            ЕСЛИ (НАЖАТО) MaterialTheme.colorScheme.primary ИНАЧЕ Color.Gray
 
     Текстовые элементы должны выводить надпись по условию: ЕСЛИ (НАЖАТО) "надпись_да" ИНАЧЕ "надпись_нет"
 
