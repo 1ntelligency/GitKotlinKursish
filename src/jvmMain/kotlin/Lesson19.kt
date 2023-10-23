@@ -2,9 +2,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,7 +23,7 @@ fun LessonRows(icons: List<Pair<ImageVector, String>>) {
     Для этого используйте обычный цикл внутри столбца.
         В цикле поместите горизонтальный ряд с центрированием по вертикали,
             внутри - Icon, отображающий first элемент пары,
-            и Text, отображающий second элемент, отступ - на 10;
+            и Text, отображающий second элемент, отступ - на 8;
         Разделитель - снаружи горизонтального ряда.
 
     Для прокрутки экрана по вертикали придайте самому столбцу модификатор прокрутки:
