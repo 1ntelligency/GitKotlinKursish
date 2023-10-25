@@ -1,7 +1,8 @@
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import data.userName
 import kotlinx.coroutines.launch
@@ -12,14 +13,15 @@ fun LessonSnackbar()  {
 }
 
 /*
-    Создайте 2 переменные, область выполнения программ и состояние для Scaffold:
+    Создайте 2 переменные, область выполнения программ и состояние для Snackbar (элемента для показа сообщений):
     val scope = rememberCoroutineScope()
-    val state = rememberScaffoldState()
+    val state = remember { SnackbarHostState() }
 
     Создайте Scaffold с параметрами:
-        scaffoldState = state,
-        floatingActionButton со значком ♥, которая будет запускать такое действие:
+        snackbarHost = { SnackbarHost(state) },
+        floatingActionButton = { FloatingActionButton({...}){...} }
+        - кнопку со значком ♥, которая будет по нажатию запускать (launch) в отдельном потоке (scope) такое действие:
             scope.launch {
-                state.snackbarHostState.showSnackbar("$userName, вы супер!", "Закрыть")
+                state.showSnackbar("$userName, вы супер!", "Закрыть")
             }
 */
