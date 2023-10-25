@@ -1,3 +1,4 @@
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -6,7 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.DateRange
@@ -46,13 +47,14 @@ private interface GenreApi {
     )
 
     companion object {
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): GenreApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/media/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<GenreApi>()
+            .build().create()
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun LessonGenres(exit: ()->Unit) {
 
@@ -69,25 +71,26 @@ fun LessonGenres(exit: ()->Unit) {
     }
     Если genre является null, сервер возвращает фильмы любых жанров. Фильмы отсортированы по зрительскому рейтингу ↓.
 
-    Объявите переменные scaffoldState = rememberScaffoldState(), scope = rememberCoroutineScope() и
-    state = rememberLazyListState() - да, мы будем в этом задании использовать Scaffold. Создайте его ниже.
-
-    Заполните атрибуты Scaffold - scaffoldState, drawerContent, topBar.
-    В drawerContent создайте "ленивый" столбец жанров, отступы названий на 10. До отступа задайте модификатор clickable,
+    Объявите переменные drawerState = rememberDrawerState(DrawerValue.Closed) и scope = rememberCoroutineScope().
+    Постройте структуру экрана с боковым меню с помощью ModalNavigationDrawer и ModalDrawerSheet.
+    Ширина меню - 70% от экрана, цвет контейнера - MaterialTheme.colorScheme.primaryContainer.
+    В меню создайте "ленивый" столбец жанров, отступы названий на 10. До отступа задайте модификатор clickable,
     в котором нам надо присвоить идентификатор жанра переменной genre и закрыть боковое меню:
         scope.launch {
             genre = it
-            scaffoldState.drawerState.close()
+            drawerState.close()
         }
     Управление боковым меню должно происходить в фоновом потоке, поэтому наш блок запускается в отдельном scope.
 
-    В topBar создайте элемент TopAppBar{} с двумя IconButton и одним текстом. Текст должен отображать надпись "Жанр: ",
-    сложенную со строкой genre?.name - названием жанра (знак ? нужен, так как genre может быть null).
-    Левая кнопка открывает боковое меню - используйте scope и функцию close() объекта scaffoldState.drawerState.
-    Правая кнопка закрывает приложение - используйте функцию из входного параметра нашего урока.
+    В основном блоке контента поместите ленивый столбец, первым элементом которого будет "липкий заголовок"
+    stickyHeader, в котором создайте элемент TopAppBar{} с параметрами:
+    title должен отображать надпись "Жанр: ", сложенную со строкой genre?.name
+        - названием жанра (знак ? нужен, так как genre может быть null).
+    navigationIcon - левая кнопка, открывает боковое меню - используйте scope и функцию close() объекта drawerState.
+    actions - правая кнопка, закрывает приложение - используйте функцию из входного параметра нашего урока.
 
-    Основной контент Scaffold должен содержать "ленивый" столбец фильмов movies. Каждый элемент на карточке (отступы
-    на 5, возвышение и закругление на 10), внутри карточки - столбец с отступами на 10. Внутри столбца:
+    Далее в этом "ленивом" столбце покажите список фильмов movies. Каждый элемент - на карточке (отступы на 5),
+    внутри карточки - столбец с отступами на 10. Внутри столбца:
         название,
         центрированный горизонтальный ряд, вертикальные отступы на 5, содержимое почти как в прошлом уроке,
         разделитель,

@@ -1,13 +1,11 @@
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.runtime.*
@@ -39,6 +37,7 @@ private interface PriceApi {
     // companion object с функцией getApi() в этот раз создайте сами. Базовый адрес сервера - https://mad.lrmk.ru/price/
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LessonSearchPrice() {
 
@@ -56,9 +55,9 @@ fun LessonSearchPrice() {
     } }
     При ЛЮБОМ изменении переменной search (ввод пользователя) список list будет АВТОМАТИЧЕСКИ перестроен.
 
-    Далее, в "ленивом" столбце отобразите через item{} первый элемент, в который поместите текстовое поле для ввода
-    строки поиска. Отступы на 8, в одну строку, есть label и trailingIcon. На значок ✖ через clickable назначьте очистку
-    поиска.
+    Далее, в "ленивом" столбце отобразите через stickyHeader{...} первый элемент, который не будет уходить с экрана.
+    Поместите сюда текстовое поле для ввода строки поиска. Отступы на 8, в одну строку, есть label и trailingIcon.
+    На значок ✖ через clickable назначьте очистку строки поиска.
 
     Ниже отобразите все элементы отфильтрованного списка list. Каждый - в горизонтальном ряду с отступами на 8,
     выравнивание - по нижней границе. Ряды визуально отделяются разделителями.

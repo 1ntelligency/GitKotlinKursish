@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Favorite
@@ -38,10 +38,10 @@ private interface MovieApi {
     )
 
     companion object {                      // здесь всё - как обычно, сервер M4 является нашим посредником к API
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): MovieApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/medialibrary/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<MovieApi>()
+            .build().create()
     }
 }
 
@@ -58,9 +58,9 @@ fun LessonInfinity() {
     }
     Начальное значение - пустой редактируемый список, после первого ответа сервера - редактируемый список из 20 фильмов.
 
-    В обычном столбце поместите ленивый столбец с весом 1 для нашего списка фильмов и BottomAppBar для отображения
-    статистики и названия сайта.
-    Фильм отображается на карточке (отступы 5, закругление и возвышение 10), внутри - столбец с отступами на 10.
+    В обычном столбце поместите ленивый столбец с весом 1 для нашего списка фильмов и BottomAppBar высотой 64 единицы
+    цвета MaterialTheme.colorScheme.primaryContainer для отображения статистики и названия сайта.
+    Фильм отображается на карточке ElevatedCard(отступы 5), внутри - столбец с отступами на 10.
     В нём: название, центрированный горизонтальный ряд с вертикальным отступом на 5 и, ниже - текст описания фильма
     тёмно-серым цветом, размером шрифта 12, с выравниванием по ширине.
     В горизонтальном ряду: значок Favorite (правый отступ 5), рейтинг (вес 1), значок DateRange (правый отступ 5) и

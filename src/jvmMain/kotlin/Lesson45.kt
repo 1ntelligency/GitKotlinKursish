@@ -4,9 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.Divider
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,7 +40,7 @@ fun LessonNumberPages() {
     Вторым идёт "ленивый" горизонтальный ряд. Он не будет брать данные из какого-либо списка, а генерировать номера
     страниц автоматически. Задайте список элементов конструкцией items(page+10) {...} - в списке всегда будет на 10
     элементов больше, чем номер текущей страницы.
-    Каждый элемент отображает текстовую кнопку размером 42.dp, на ней надпись = номерСтраницы+1, размер шрифта 18.
+    Каждый элемент отображает текстовую кнопку, на ней надпись = номерСтраницы+1, размер шрифта 18.
     Кнопка должна присваивать переменной page нужный номер страницы. Укажите также свойство enabled, чтобы кнопка
     текущей страницы не была активной.
  */
