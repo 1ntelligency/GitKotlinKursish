@@ -4,12 +4,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,10 +32,10 @@ private interface SearchApi {
     )
 
     companion object {
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): SearchApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/media/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<SearchApi>()
+            .build().create()
     }
 }
 
@@ -57,11 +54,12 @@ fun LessonSearch() {
     val movies by produceState(emptyList(), search) {
         value = api.movies(search).sortedByDescending { it.vote_average }
     }
-    Поскольку начальное значение переменной - "none", а таких названий в базе нет, то список поначалу будет пуст.
+    Поскольку начальное значение переменной - "none", а таких названий в базе точно нет, то список поначалу будет пуст.
 
-    Теперь создайте Scaffold, в его параметр topBar поместите TopAppBar с двумя кнопками и OutlinedTextField.
-    Текстовое поле - с весом 1, в одну строку, есть строка-шаблон серого цвета. Должно менять переменную text.
-    Кнопка сброса должна очищать обе переменные, кнопка поиска - присваивать search значение строки text.
+    Теперь создайте простй столбец, первым в него поместите TextField на всю ширину, в одну строку, размер шрифта
+    textStyle = TextStyle(fontSize = 20.sp), также есть строка-шаблон серого цвета. Должно менять переменную text.
+    leadingIcon = кнопка сброса, должна очищать обе переменные,
+    trailingIcon = кнопка поиска, должна присваивать переменной search значение строки text.
 
-    Основной контент Scaffold - список фильмов, как в предыдущем задании.
+    Далее в этом столбце идёт список фильмов, как в предыдущем задании.
 */

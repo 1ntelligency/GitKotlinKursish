@@ -2,7 +2,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.ThumbUp
@@ -56,10 +56,10 @@ private interface LikesApi {
     )
 
     companion object {
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): LikesApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/media/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<LikesApi>()
+            .build().create()
     }
 }
 
@@ -101,10 +101,10 @@ fun LessonLikes() {
             like = api.like(if (like.your<0) 0 else -1, it.id)
         }
 
-    Осталось сделать цвет. До или после блока LaunchedEffect объявите два значения цвета:
+    Осталось сделать цвет кнопок. До или после блока LaunchedEffect объявите два значения цвета:
         // если ваш голос положителен, то основной цвет темы, иначе - серый:
-        val colorLike = if (like.your>0) MaterialTheme.colors.primaryVariant else Color.Gray
-        // если ваш голос отрицателен, то цвет ошибки (MaterialTheme.colors.error), иначе - серый:
+        val colorLike = if (like.your>0) MaterialTheme.colorScheme.primary else Color.Gray
+        // если ваш голос отрицателен, то цвет ошибки (MaterialTheme.colorScheme.error), иначе - серый:
         val colorDislike = напишите сами...
     Теперь примените эти цвета к соответствующим кнопкам и надписям.
 */

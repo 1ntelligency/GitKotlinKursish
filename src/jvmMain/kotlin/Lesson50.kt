@@ -3,7 +3,7 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
@@ -39,10 +39,10 @@ private interface RegApi {
     data class Result(val success: Int, val error: String?)
 
     companion object {
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): RegApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/mail/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<RegApi>()
+            .build().create()
     }
 }
 
@@ -74,7 +74,7 @@ fun LessonRegistration() {
 
     В центрированном столбце отобразите заголовок основным цветом темы, размер шрифта 20, отступы на 4.
 
-    Все поля ввода идут с отступами на 4, на всю ширину экрана.
+    Все поля ввода OutlinedTextField идут с отступами на 4, на всю ширину экрана.
     К каждому нужно также применить модификатор .focusRequester(focusLogin) - для каждого укажите свой реквестер, они
         будут использованы для принудительной установки фокуса.
     Все поля однострочные и имеют форму CircleShape.
@@ -89,10 +89,10 @@ fun LessonRegistration() {
         enter = expandVertically { 0 }, exit = shrinkVertically { 0 }
 
     У разделителей и кнопок тоже отступы на 4.
-    Кнопка высотой строго 72dp, на всю ширину, круглая форма. У надписи внутри кнопки отступы на 10.
+    Кнопка регистрации на всю ширину, круглая форма. У надписи внутри кнопки отступы на 10.
 
     Ниже кнопки - текст, отображающий строку error. Если всё нормально, эта строка пуста и не видна на экране.
-    Цвет надписи - MaterialTheme.colors.error, текстовое выравнивание по центру (пригодится, если сообщение длинное).
+    Цвет надписи - MaterialTheme.colorScheme.error, текстовое выравнивание по центру (пригодится, если сообщение длинное).
 
     Теперь, наконец, к действию, которое производит кнопка. Она запускает фоновый процесс scope.launch {...}, в котором
         нужно проверить ввод пользователя на все возможные ошибки (см. выше) и обратить на них его внимание, либо,

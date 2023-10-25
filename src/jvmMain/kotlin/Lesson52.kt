@@ -9,7 +9,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
@@ -50,10 +50,10 @@ private interface InboxApi {
     )
 
     companion object {
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): InboxApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/mail/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<InboxApi>()
+            .build().create()
     }
 }
 
@@ -70,7 +70,7 @@ fun LessonInbox(avatars: List<String>) {
     как видите, на сервер отправляются ваши сохранённые логин и пароль, полученный список сообщений разворачивается
     наоборот (reversed), так, чтобы последнее пришедшее сообщение стало первым в списке.
 
-    Как обычно, отобразите в ленивом столбце все сообщения в виде карточек (отступы 5, возвышение/закругление 10).
+    Как обычно, отобразите в ленивом столбце все сообщения в виде карточек (отступы 5).
     У аватарки отступы 5, размер 48 и обрезка. Для упрощения мы не загружаем аватарки с сервера, а берём из ресурсов
     приложения. Поэтому, прежде чем отображать картинку, желательно убедиться, что такая есть: it.avatar in avatars.
     У текстового столбца отступы 5, у адреса и даты размер шрифта 12, серый цвет.
@@ -88,7 +88,7 @@ fun LessonInbox(avatars: List<String>) {
 
     Выбранное сообщение message может быть null, поэтому внутри AnimatedVisibility поместите конструкцию
     message?.let {...}, внутри которой, обращаясь через "it" к выбранному пользователем сообщению, оформите карточку
-    для отображения всего письма: отступы на 15, возвышение/закругление 10. Внутренняя структура - самостоятельно:
+    для отображения всего письма, отступы на 15. Внутренняя структура - самостоятельно:
     отступы аватарки и столбца с именем/адресом на 5, темы и основного текста на 15. Размер аватарки 48, размер шрифта
     имени/должности 14, адреса и даты - 12. Основной текст сделайте выделяемым (SelectionContainer).
     Слово "Тема" серым цветом можно добавить к тексту темы таким образом:
@@ -101,7 +101,7 @@ fun LessonInbox(avatars: List<String>) {
     содержимого карточки. Кнопка, разумеется, присваивает null нашей переменной message.
 
     После этого AnimatedVisibility добавьте ещё один, с теми же настройками, но с выравниванием вниз экрана.
-    Внутри - карточка, отступы 5, круглая, возвышение 10. В ней - две кнопки-значка для перелистывания сообщений
+    Внутри - карточка, отступы 5. В ней - две кнопки-значка для перелистывания сообщений
     влево-вправо и текст с номером открытого сообщения (вычисляется так: messages.indexOf(message) + 1) и общим их
     количеством (messages.size). Кнопка "влево2 программируется примерно так:
         val i = messages.indexOf(message)       // нашли номер текущего по списку,

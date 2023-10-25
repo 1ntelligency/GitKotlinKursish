@@ -8,7 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Send
@@ -51,10 +51,10 @@ private interface SendApi {
     // Функция возвращает структуру Result как в предыдущем задании. Адрес API - https://mad.lrmk.ru/mail/send
 
     companion object {
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): SendApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/mail/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<SendApi>()
+            .build().create()
     }
 }
 
@@ -76,17 +76,19 @@ fun LessonSend() {
 
     Разместите в столбце три поля ввода, как в образце. Первое поле, "кому", пока пусто ("") и ничего не делает ({}).
     Всем полям настройте надписи и реквестеры фокуса. Полю "кому" дополнительно добавьте модификатор
-    onFocusChanged { show = it.isFocused } - когда поле получает фокус ввода, нужно отобразить список пользователей.
+    onFocusChanged {...} - укажите здесь условие: когда поле получает фокус ввода (it.isFocused),
+    нужно отобразить список пользователей (show = true).
 
     Далее, заключите весь свой столбец внутрь Box, после столбца внутри этого же бокса поместите FloatingActionButton
     с выравниванием вниз-вправо и отступами на 15. Код нажатия этой кнопки напишем чуть позже.
 
     После кнопки, всё ещё внутри бокса, поместите AnimatedVisibility, управляемый переменной show. Выравнивание - центр,
     анимации - expandIn { IntSize.Zero } и shrinkOut { IntSize.Zero }. Внутри - ленивый столбец для отображений карточек
-    пользователей (отступы 5, закругление/возвышение 10).
+    пользователей (отступы 5).
 
     Элемент Row внутри карточки должен быть нажимаемым: если текущий элемент входит в список пользователей "to" (пишется
-    it in to), то исключить его из этого списка (to -= it), иначе включить его в этот список (to += it).
+    it in to), то исключить его из этого списка (to -= it), иначе включить его в этот список (to += it). Кроме того,
+    нажатие этого элемента должно убирать список пользователей (show = false).
 
     Слева от имени пользователя выводится: Если он входит в список "to", то значок CheckCircle цвета secondaryVariant,
     иначе картинка-аватарка этого пользователя. И то и другое - с отступами на 5, размер 48. Аватарка - обрезана.
