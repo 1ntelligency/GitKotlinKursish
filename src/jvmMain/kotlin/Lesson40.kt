@@ -3,7 +3,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.runtime.*
@@ -45,14 +45,14 @@ fun LessonRegions() {
     Создайте "ленивый" столбец для отображения элементов списка regions.
         Используйте горизонтальный ряд с вертикальным центрированием для отображения текста и кнопки-значка.
         Отступы текста - на 10. Вес текста - 1, чтобы прижать кнопку вправо.
-        Размер кнопки - 32. Цвет значка - MaterialTheme.colors.error
+        Размер кнопки - 32. Цвет значка - MaterialTheme.colorScheme.error
 
     Кнопка должна удалять текущий элемент списка: regions.remove(it) или просто regions -= it
 
     Важно: в редактируемом списке очень желательно определить ключ, по которому Compose будет отличать строки списка.
-        Нашим ключом будет само название региона. Тогда функцию items для нашего ленивого столбца нужно оформить так:
+        Нашим ключом будет само название региона. Тогда функцию items нашего ленивого столбца нужно переделать так:
     items(regions, key = { it.name_with_type }) { ... }
 
-    В качестве бонуса добавьте модификатор анимации animateItemPlacement элементу внутри items, чтобы обеспечить
-        плавное удаление строк
+    В качестве приятного бонуса добавьте модификатор анимации animateItemPlacement() элементу внутри items, чтобы
+        обеспечить удаление строк с плавной анимацией
 */

@@ -1,4 +1,3 @@
-import R.drawable
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
@@ -8,7 +7,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
@@ -43,9 +42,9 @@ private interface WeatherApi {
     // @GET("weather/weather")
     // ...
 
-    data class Weather(
-        val main: Main,
-        val weather: List<Weather>
+    data class Weather(             // сокращённый вариант класса "текущая погода",
+        val main: Main,             // содержащий только температуру (it.main.temp)
+        val weather: List<Weather>  // и текстовое описание погоды (it.weather[0].description)
     ) {
         data class Main(val temp: Double)
         data class Weather(val description: String)
@@ -70,7 +69,7 @@ fun LessonWeatherCities() {
     Создайте два анимированных (с вертикальным сдвигом) блока для двух случаев, когда choose истинна и не истинна.
 
     В первом случае отобразите ленивый список названий всех (all) городов с чекбоксами.
-    Размер чекбокса ограничить 32.dp, у текста задать отступы на 10.
+    Размер чекбокса ограничить 32.dp, а тексту задать отступы на 10.
     Чекбокс активен, когда город выбран, то есть содержится в списке cities, условие пишется так: city in cities
     По нажатию чекбокса надо или включить этот город в список (cities += city), или исключить из него (cities -= city).
 
@@ -78,9 +77,8 @@ fun LessonWeatherCities() {
     просто оформите вызов функции: WeatherCity(api, it) - она находится чуть ниже, и мы доделаем её чуть позже.
 
     Последним элементом этого списка добавьте item{...} в котором будет "кнопка" выбора города.
-    На сомом деле это не кнопка, а карточка (отступы 5, закругление 20, возвышение 5, фон серый, содержимое белое),
-    внутри неё - значок и текст в полностью центрированном (horizontalArrangement и verticalAlignment) ряду,
-    к этому Row примените кликабельность (choose присвоить истину) и отступы на 25.
+    Это будет ElevatedButton на всю ширину, отступы 5, фигура с закруглением на 10,
+    внутри неё - значок и текст, кнопка должна переменной choose присвоить истину.
 
     Создайте BackHandler для возврата от выбора городов к главному экрану. Проверьте логику работы программы.
     Список городов должен редактироваться, кнопка "назад" работать. Затем переходите к функции ниже.
@@ -100,10 +98,12 @@ private fun WeatherCity(api: WeatherApi, city: String) {
         value = api.weather(city)
     }
 
-    Отобразите карточку (отступы и возвышение на 5, закругление на 20, цвет контента белый). Внутри неё в качестве фона
-    поместите картинку из рисунка drawable.weather, установите режим заполнения: contentScale = ContentScale.Inside
+    Отобразите карточку ElevatedCard, отступы на 5, белый цвет контента карточки делается заданием параметра colors:
+        colors = CardDefaults.cardColors(contentColor = Color.White)
+    Внутри карточки поместите Box, в качестве фона первым элементом бокса поместите картинку облачного неба
+    из ресурса R.drawable.weather, установите режим заполнения: contentScale = ContentScale.Inside
 
-    Поверх картинки (просто после неё в тексте программы) поместите столбец с отступами на 15. Внутри - название города
+    Поверх картинки (просто после неё в тексте программы) поместите столбец с отступами на 10. Внутри - название города
     полужирным текстом. Ниже - конструкция weather?.let{...} - элементы внутри этого блока будут отображаться только
     когда ответ сервера будет получен, и переменная weather не null. Обращаться к этой переменной внутри блока следует
     только через слово "it".

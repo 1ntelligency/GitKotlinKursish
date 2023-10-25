@@ -6,9 +6,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.Divider
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
@@ -30,7 +28,7 @@ private interface RegionCityApi { // интерфейс для связи с с�
     data class Region(val kladr_id: Long, val name_with_type: String)
 
     // Функция, производящая GET-запрос с параметром по адресу https://mad.lrmk.ru/kladr/city?region_id=XXXXX, где
-    // ХХХХХ - код региона (region), как длинное целое (Long) число, код может быть null (Long?)
+    // ХХХХХ - код региона (region), как длинное целое (Long) число, причём код может быть null (Long?)
     // если код указан, возвращаются только города этого региона, если он null, возвращаются все города.
     @GET("city")
     suspend fun cities(@Query("region_id") region: Long?): List<City>
@@ -39,10 +37,10 @@ private interface RegionCityApi { // интерфейс для связи с с�
     // и возвращающую список регионов, используя класс Region (как в предыдущем задании)
 
     companion object { // построитель интерфейса для API сервера https://mad.lrmk.ru/kladr используя формат данных JSON
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): RegionCityApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/kladr/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<RegionCityApi>()
+            .build().create()
     }
 }
 
@@ -74,7 +72,7 @@ fun LessonRegionCities() {
     текста Icon со значком стрелочки.
     Сам Row сделайте clickable, при нажатии переменной region нужно присвоить значение kladr_id нажатого элемента.
 
-    В список городов добавьте первым элементом item{...}, в котором укажите аналогичный clickable Row со
+    В список городов добавьте первым элементом одиночный item{...}, в котором укажите аналогичный clickable Row со
     стрелочкой назад. По его нажатию переменной region должен присваиваться null.
 
     Запрограммируйте BackHandler, чтобы кнопка телефона "назад" тоже обнуляла код региона.

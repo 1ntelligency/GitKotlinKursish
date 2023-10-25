@@ -1,6 +1,6 @@
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -10,7 +10,7 @@ import retrofit2.create
 import retrofit2.http.GET
 import ui.LazyColumn
 
-//  Начиная с этого задания нам будет необходимо подключение к API сервера мастерской М4.
+//  Начиная с этого задания нам будет необходимо подключение к API сервера мастерской 6-Ⓜ2 ГБПОУ ЛРМК.
 //  Вне мастерской эти задания выполнить и проверить не получится.
 
 private interface CityApi {                             // интерфейс для связи с сервером REST API
@@ -21,10 +21,10 @@ private interface CityApi {                             // интерфейс д
     suspend fun cities(): List<City> // и получающая список городов из JSON типа [{ type : "г", city : "Лермонтов" }...]
 
     companion object { // построитель интерфейса для API сервера https://mad.lrmk.ru/kladr используя формат данных JSON
-        fun getApi() = Retrofit.Builder()
+        fun getApi(): CityApi = Retrofit.Builder()
             .baseUrl("https://mad.lrmk.ru/kladr/")
             .addConverterFactory(GsonConverterFactory.create())
-            .build().create<CityApi>()
+            .build().create()
     }
 }
 
