@@ -7,9 +7,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Person
@@ -43,10 +41,9 @@ fun LessonFriends(users: List<User>) {
     так как оба списка будут меняться. Так как фото у каждого пользователя уникально, ключом будет фото, например:
         items(friends, { it.photo }) { friend -> ... }
 
-    Внутри обоих блоков - карточка (отступы на 5, закругление и возвышение на 10, цвет фона в первом блоке 0xFFFFCCFF,
-    во втором - 0xFFDDDDFF). Добавьте также модификатор анимации animateItemPlacement. Внутри карточки - столбец с
-    горизонтальным выравниванием по центру. Внутри - фото пользователя (отступы 5 и обрезка с закруглением на 10) и
-    имя пользователя серого цвета (нижний отступ на 5).
+    Внутри обоих блоков - карточка (отступы на 5). Добавьте также модификатор анимации animateItemPlacement.
+    Внутри карточки - столбец с горизонтальным выравниванием по центру. Внутри - фото пользователя
+    (отступы 5 и обрезка с закруглением на 10) и имя пользователя серого цвета (нижний отступ на 5).
 
     Столбцу придайте модификатор щелчка, который будет добавлять пользователя в друзья, либо удалять его - в зависимости
     от того, в каком из items мы находимся.
