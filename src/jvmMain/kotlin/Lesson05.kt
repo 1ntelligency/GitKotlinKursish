@@ -35,7 +35,7 @@ fun LessonButtons() {
         только называется она теперь не просто Button, а OutlinedButton
 
     Третья кнопка - ElevatedButton вместо Button, значок Star
-    Четвёртая кнопка - FilledTonalButton, значок Star
+    Четвёртая кнопка - FilledTonalButton, значок Search
     Пятая - TextButton, без значка
 
     Шестая - IconButton, без текста, значок Favorite покрасьте основным цветом темы, добавив в Icon третий параметр:
