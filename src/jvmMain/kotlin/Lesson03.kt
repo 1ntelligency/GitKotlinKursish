@@ -7,7 +7,18 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun LessonCompass() {
+    Box {
+        Text("северо-запад", Modifier.align(Alignment.TopStart))
+        Text("север", Modifier.align(Alignment.TopCenter), fontSize = 24.sp)
+        Text("северо-восток", Modifier.align(Alignment.TopEnd))
+        Text("запад", Modifier.align(Alignment.CenterStart), fontSize = 24.sp)
+        Text("центр", Modifier.align(Alignment.Center), fontSize = 32.sp)
+        Text("восток", Modifier.align(Alignment.CenterEnd), fontSize = 24.sp)
+        Text("юго-запад", Modifier.align(Alignment.BottomStart))
+        Text("юг", Modifier.align(Alignment.BottomCenter), fontSize = 24.sp)
+        Text("юго-восток", Modifier.align(Alignment.BottomEnd))
 
+    }
 }
 
 /*

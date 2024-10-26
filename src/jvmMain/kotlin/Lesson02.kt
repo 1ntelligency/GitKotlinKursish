@@ -10,7 +10,11 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LessonRow() {
-
+    Row (horizontalArrangement = Arrangement.SpaceBetween){
+        Text("Красный", Modifier.background(Color.Red).padding(8.dp))
+        Text("Жёлтый", Modifier.background(Color.Yellow).padding(8.dp))
+        Text("Зелёный", Modifier.background(Color.Green).padding(8.dp))
+    }
 }
 
 /*

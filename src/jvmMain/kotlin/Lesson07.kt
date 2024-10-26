@@ -1,16 +1,53 @@
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun LessonSwitches() {
+    var radio by remember { mutableStateOf(false) }
+    var check by remember { mutableStateOf(false) }
+    var switch by remember { mutableStateOf(false) }
+    var toggle by remember { mutableStateOf(false) }
+    Column {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                radio, { radio = !radio })
+            Text(if (radio) "да" else "нет") }
 
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Checkbox(
+                check, { check = it })
+            Text(if (check) "выбран" else "не выбран") }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Switch(
+                switch, { switch = it })
+            Text(if (switch) "включен" else "выключен") }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconToggleButton(
+                toggle, { toggle = it }) {
+                Icon(
+                    Icons.Default.Favorite,
+                    "Избранное",
+                    tint = if (toggle) MaterialTheme.colorScheme.primary else Color.Gray) }
+            Text(if (toggle) "нравится" else "не нравится")
+        }
+    }
 }
+
+
+
+
 
 /*
     Тема - переключатели

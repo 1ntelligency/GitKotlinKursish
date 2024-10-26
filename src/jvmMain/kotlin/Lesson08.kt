@@ -13,8 +13,41 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LessonRadios() {
-
+var color by remember { mutableStateOf(Color.Red) }
+    Column {
+        Row (verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.clickable { color = Color.Red } )
+        {
+            RadioButton(color == Color.Red, { color = Color.Red })
+            Text("Красный")
+        }
+        Row (verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.clickable { color = Color.Yellow } )
+        {
+            RadioButton(color == Color.Yellow, { color = Color.Yellow })
+            Text("Жёлтый")
+        }
+        Row (verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.clickable { color = Color.Green } )
+        {
+            RadioButton(color == Color.Green, { color = Color.Green })
+            Text("Зелёный")
+        }
+    }
+    Column (Modifier.size(200.dp).clip(CircleShape).background(Color.Gray).padding(16.dp),
+        verticalArrangement = Arrangement.SpaceEvenly) {
+        Box (Modifier.weight(1f).padding(16.dp).aspectRatio(1f)) {
+            if (color == Color.Red) color else Color.DarkGray
+        }
+        Box (Modifier.weight(1f).padding(16.dp).aspectRatio(1f)) {
+            if (color == Color.Yellow) color else Color.DarkGray
+        }
+        Box (Modifier.weight(1f).padding(16.dp).aspectRatio(1f)) {
+            if (color == Color.Green) color else Color.DarkGray
+        }
+    }
 }
+
 
 /*
     Тема - радиокнопки

@@ -15,7 +15,24 @@ import androidx.compose.ui.unit.sp
 
 @Composable      // dossier - текст самого досье, используйте этот параметр в элементе Text
 fun LessonJamesBond(dossier: String) {
+    Column {
+        Text("Секретное досье", Modifier.align(Alignment.CenterHorizontally).padding(8.dp), fontSize = 24.sp)
+        Row (Modifier.padding(4.dp)){
+            Text("Имя:", Modifier.weight(1f), fontStyle = FontStyle.Italic)
+            Text("Джеймс", Modifier.weight(3f), fontWeight = FontWeight.SemiBold)
+        }
+        Row (Modifier.padding(4.dp)){
+            Text("Фамилия:", Modifier.weight(1f), fontStyle = FontStyle.Italic)
+            Text("Бонд", Modifier.weight(3f), fontWeight = FontWeight.SemiBold)
+        }
+        Row (Modifier.padding(4.dp)){
+            Text("Возраст:", Modifier.weight(1f), fontStyle = FontStyle.Italic)
+            Text("42", Modifier.weight(3f), fontWeight = FontWeight.SemiBold)
+        }
+        Divider()
+        Text(dossier, Modifier.padding(4.dp), textAlign = TextAlign.Justify)
 
+    }
 }
 
 /*

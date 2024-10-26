@@ -1,8 +1,5 @@
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -13,8 +10,47 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LessonImages() {
+    var file by remember { mutableStateOf(R.drawable.p1) }
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Image(painterResource(R.drawable.p1), "Яблоко")
 
+        Row(modifier = Modifier.fillMaxWidth()) {
+            ElevatedButton(
+                onClick = { file = R.drawable.p1 },
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .padding(3.dp)
+            ) {
+                Image(painter = painterResource(R.drawable.p1), contentDescription = "Яблоко")
+            }
+
+            // Кнопка для груши
+            ElevatedButton(
+                onClick = { file = R.drawable.p2 },
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .padding(3.dp)
+            ) {
+                Image(painter = painterResource(R.drawable.p2), contentDescription = "Груша")
+            }
+            ElevatedButton(
+                onClick = { file = R.drawable.p3 },
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .padding(3.dp)
+            ) {
+                Image(painter = painterResource(R.drawable.p3), contentDescription = "Вишня")
+            }
+        }
+    }
 }
+
+
+
+
 
 /*
     Тема - вывод на экран изображений и кнопки-картинки.
