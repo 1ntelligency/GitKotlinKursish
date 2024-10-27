@@ -50,11 +50,7 @@ fun LessonButtons() {
         }
         AssistChip({ text = buttons[9] }, { Text("Вспомогательный чип") }, leadingIcon = { Icon(Icons.Default.Check, "Вспомогательный чип") })
         ElevatedAssistChip({ text = buttons[10] }, { Text("Приподнятый чип") }, leadingIcon = { Icon(Icons.Default.Clear, "Приподнятый чип") })
-
-
     }
-
-
 }
 
 /*
