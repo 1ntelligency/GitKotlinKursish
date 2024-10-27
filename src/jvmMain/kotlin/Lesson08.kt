@@ -13,64 +13,93 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LessonRadios() {
-var color by remember { mutableStateOf(Color.Red) }
-    Column {
-        Row (verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.clickable { color = Color.Red } )
-        {
-            RadioButton(color == Color.Red, { color = Color.Red })
-            Text("Красный")
+    var color by remember { mutableStateOf(Color.Red) }
+
+    Column()
+    {
+        Column {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.clickable { color = Color.Red }
+            ) {
+                RadioButton(color == Color.Red, { color = Color.Red })
+                Text("Красный")
+            }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.clickable { color = Color.Yellow }
+            ) {
+                RadioButton(color == Color.Yellow, { color = Color.Yellow })
+                Text("Жёлтый")
+            }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.clickable { color = Color.Green }
+            ) {
+                RadioButton(color == Color.Green, { color = Color.Green })
+                Text("Зелёный")
+            }
         }
-        Row (verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.clickable { color = Color.Yellow } )
-        {
-            RadioButton(color == Color.Yellow, { color = Color.Yellow })
-            Text("Жёлтый")
-        }
-        Row (verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.clickable { color = Color.Green } )
-        {
-            RadioButton(color == Color.Green, { color = Color.Green })
-            Text("Зелёный")
-        }
-    }
-    Column (Modifier.size(200.dp).clip(CircleShape).background(Color.Gray).padding(16.dp),
-        verticalArrangement = Arrangement.SpaceEvenly) {
-        Box (Modifier.weight(1f).padding(16.dp).aspectRatio(1f)) {
-            if (color == Color.Red) color else Color.DarkGray
-        }
-        Box (Modifier.weight(1f).padding(16.dp).aspectRatio(1f)) {
-            if (color == Color.Yellow) color else Color.DarkGray
-        }
-        Box (Modifier.weight(1f).padding(16.dp).aspectRatio(1f)) {
-            if (color == Color.Green) color else Color.DarkGray
+
+        Column(
+            modifier = Modifier
+                .width(192.dp)
+                .clip(CircleShape)
+                .background(Color.Gray)
+                .padding(vertical = 0.dp)
+                .padding(horizontal = 16.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .clip(CircleShape)
+                    .background(if (color == Color.Red) color else Color.DarkGray)
+                    .padding(16.dp)
+            )
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .clip(CircleShape)
+                    .background(if (color == Color.Yellow) color else Color.DarkGray)
+                    .padding(16.dp)
+            )
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .clip(CircleShape)
+                    .background(if (color == Color.Green) color else Color.DarkGray)
+                    .padding(16.dp)
+            )
         }
     }
 }
 
 
 /*
-    Тема - радиокнопки
-    Создайте переменную color через связку remember / mutableStateOf типа Color, значение по умолчанию - Color.Red
+Тема - радиокнопки
+Создайте переменную color через связку remember / mutableStateOf типа Color, значение по умолчанию - Color.Red
 
-    Создайте столбец, внутри него - 3 горизонтальных ряда с вертикальным выравниванием по центру
-    Каждый ряд содержит радиокнопку и текстовый элемент.
-    Первая радиокнопка работает так: RadioButton(color == Color.Red, { color = Color.Red })
-    остальные аналогично.
+Создайте столбец, внутри него - 3 горизонтальных ряда с вертикальным выравниванием по центру
+Каждый ряд содержит радиокнопку и текстовый элемент.
+Первая радиокнопка работает так: RadioButton(color == Color.Red, { color = Color.Red })
+остальные аналогично.
 
-    Чтобы цвет можно было выбрать и нажатием на его название, добавьте каждому горизонтальному ряду модификатор
-    обработки нажатия, для первого ряда так: Modifier.clickable { color = Color.Red }
+Чтобы цвет можно было выбрать и нажатием на его название, добавьте каждому горизонтальному ряду модификатор
+обработки нажатия, для первого ряда так: Modifier.clickable { color = Color.Red }
 
-    Светофор рисуется так:
-    Создайте столбец с модификаторами обрезки по кругу clip(CircleShape) и цвета фона background(Color.Gray)
-        Внутри столбца - три Box (мы их обрежем в кружки). У каждого - цепочка модификаторов:
-            вес 1 (чтобы они занимали одинаковое пространство по высоте);
-            отступы на 16 (толщина обводки корпуса светофора);
-            соотношение сторон 1:1, делается так: .aspectRatio(1f) - чтобы ширина круга была равна его высоте;
-            обрезка по кругу;
-            цвет фона, у каждого свой, закрашивается по условию, например:
-                ЕСЛИ (color == Color.Red) color ИНАЧЕ Color.DarkGray
+Светофор рисуется так:
+Создайте столбец с модификаторами обрезки по кругу clip(CircleShape) и цвета фона background(Color.Gray)
+Внутри столбца - три Box (мы их обрежем в кружки). У каждого - цепочка модификаторов:
+    вес 1 (чтобы они занимали одинаковое пространство по высоте);
+    отступы на 16 (толщина обводки корпуса светофора);
+    соотношение сторон 1:1, делается так: .aspectRatio(1f) - чтобы ширина круга была равна его высоте;
+    обрезка по кругу;
+    цвет фона, у каждого свой, закрашивается по условию, например:
+        ЕСЛИ (color == Color.Red) color ИНАЧЕ Color.DarkGray
 
-    Справка:
-    https://metanit.com/kotlin/jetpack/4.5.php
+Справка:
+https://metanit.com/kotlin/jetpack/4.5.php
 */
