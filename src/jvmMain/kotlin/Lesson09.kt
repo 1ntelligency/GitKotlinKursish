@@ -56,7 +56,6 @@ fun LessonChecks() {
             }
         }
 
-        // Светофор
         Column(
             modifier = Modifier
                 .width(192.dp)

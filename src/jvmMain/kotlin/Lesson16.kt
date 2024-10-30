@@ -29,7 +29,6 @@ fun LessonBack() {
                 Image(painter = painterResource(R.drawable.p1), contentDescription = "Яблоко")
             }
 
-            // Кнопка для груши
             ElevatedButton(
                 onClick = { file = R.drawable.p2 },
                 modifier = Modifier
