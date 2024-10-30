@@ -12,6 +12,16 @@ import kotlin.math.min
 
 @Composable
 fun LessonProgress() {
+    var text by remember {mutableStateOf("")}
+    Column {
+        TextField(text, {text = it},
+            label = { Text("Ваша работа") },
+            modifier = Modifier.fillMaxWidth().aspectRatio(1f),
+            placeholder = { Text("Набирайте любой случайный текст") },
+            )
+        Text("Индикатор усталости:", Modifier.padding(8.dp))
+        LinearProgressIndicator(text.length/100f, Modifier.fillMaxWidth())
+    }
 
 }
 

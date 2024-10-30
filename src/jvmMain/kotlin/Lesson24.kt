@@ -13,11 +13,38 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ui.ElevatedCard
+import ui.LazyColumn
 import ui.LazyRow
 
 @Composable
 fun LessonLongRow(fruits: List<Pair<String, String>>) {
+    LazyRow {
+        items(fruits) { (picture, name) ->
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
 
+                ElevatedCard(
+                    shape = CircleShape,
+                    modifier = Modifier
+                        .fillParentMaxWidth(1 / 3f)
+                        .padding(10.dp)
+                ) {
+                    Image(
+                        painter = painterResource(picture),
+                        contentDescription = name,
+                        modifier = Modifier.clickable {}
+                    )
+                }
+
+                Text(
+                    text = name,
+                    fontSize = 14.sp,
+                    color = Color.Gray,
+                )
+            }
+        }
+    }
 }
 
 /*

@@ -8,10 +8,57 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun LessonSliders() {
+    var red by remember { mutableStateOf(0f) }
+    var green by remember { mutableStateOf(0f) }
+    var blue by remember { mutableStateOf(0f) }
 
+    Column {
+        Slider(value = red, onValueChange = { red = it })
+        Slider(value = green, onValueChange = { green = it })
+        Slider(value = blue, onValueChange = { blue = it })
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(1f)  // Квадрат
+                .background(Color(red, green, blue))
+        )
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Gray)
+        ) {
+            Text(
+                text = (red * 100).toInt().toString() + "%",
+                modifier = Modifier
+                    .weight(1f)
+                    .background(Color.Red)
+                    .padding(8.dp),
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = (green * 100).toInt().toString() + "%",
+                modifier = Modifier
+                    .weight(1f)
+                    .background(Color.Green)
+                    .padding(8.dp),
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = (blue * 100).toInt().toString() + "%",
+                modifier = Modifier
+                    .weight(1f)
+                    .background(Color.Blue)
+                    .padding(8.dp),
+                textAlign = TextAlign.Center
+            )
+        }
+    }
 }
 
 /*

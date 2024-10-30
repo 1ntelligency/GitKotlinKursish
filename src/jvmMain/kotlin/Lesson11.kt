@@ -1,18 +1,13 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,9 +18,72 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun LessonTextFieldTypes() {
+    var textfieldvalue1 by remember { mutableStateOf("") }
+    var textfieldvalue2 by remember { mutableStateOf("") }
+    var textfieldvalue3 by remember { mutableStateOf("") }
+    var textfieldvalue4 by remember { mutableStateOf("") }
 
+    Column() {
+        OutlinedTextField(
+            textfieldvalue1,
+            { textfieldvalue1 = it },
+            label = { Text("Поле ввода пароля") },
+            modifier = Modifier.fillMaxWidth().padding(10.dp),
+            placeholder = { Text("Введите не менее 6 букв и цифр") },
+            singleLine = true,
+            visualTransformation = PasswordVisualTransformation()
+        )
+        OutlinedTextField(
+            textfieldvalue2,
+            { textfieldvalue2 = it },
+            label = {
+                Row (verticalAlignment = Alignment.CenterVertically){
+                    Icon(Icons.Default.Edit, "")
+                    Text("Поле с кнопками")
+                }
+                    },
+            modifier = Modifier.fillMaxWidth().padding(10.dp),
+            placeholder = { Text("Начинайте ввод...") },
+            singleLine = true,
+            leadingIcon = {
+                Icon(
+                    Icons.Default.Clear, "",
+                    tint = Color.Red,
+                    modifier = Modifier.clickable{})
+            },
+            trailingIcon = {
+                Icon(Icons.Default.Search, "",
+                    tint = (MaterialTheme.colorScheme.primary),
+                    modifier = Modifier.clickable{})
+            }
+        )
+        OutlinedTextField(
+            textfieldvalue3,
+            { textfieldvalue3 = it },
+            label = { Text("Закруглённое поле ввода") },
+            modifier = Modifier.fillMaxWidth().padding(10.dp),
+            singleLine = true,
+            shape = CircleShape,
+        )
+
+        OutlinedTextField(
+            textfieldvalue4,
+            { textfieldvalue4 = it },
+            label = { Text("Что за фрукт?") },
+            modifier = Modifier.padding(10.dp),
+            leadingIcon = {
+                Image(painterResource(R.drawable.p1), "",
+                    modifier = Modifier.padding(4.dp),
+                    alignment = Alignment.TopStart
+                )
+            }
+        )
+    }
 
 }
+
+
+
 
 /*
     Тема - дополнительные возможности ввода текста.

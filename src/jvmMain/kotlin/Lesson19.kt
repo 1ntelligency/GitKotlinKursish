@@ -1,7 +1,7 @@
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -14,8 +14,32 @@ import ui.verticalScroll
 
 @Composable // icons - список (List) из пар (Pair) значений - векторного рисунка (ImageVector) и строки (String)
 fun LessonRows(icons: List<Pair<ImageVector, String>>) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
+        icons.forEach { (icon, name) ->
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 6.dp)
+                    .offset(x = (-7.dp))
+            ) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = name,
+                    modifier = Modifier.padding(horizontal = 7.dp)
+                )
+                Text(text = name, Modifier.padding(1.dp))
 
+            }
+            Divider()
+        }
+    }
 }
+
 
 /*
     icons - список типа listOf( Icons.Default.Add to "Add",  Icons.Default.Close to "Close", и т.д. )

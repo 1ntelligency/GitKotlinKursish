@@ -1,16 +1,52 @@
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import ui.DropdownMenu
 
 @Composable // Используйте exit в качестве параметра-действия для пункта "выход"
 fun LessonMenu(exit: ()->Unit) {
+    var menu by remember { mutableStateOf(false) }
+    Box {
+        FilledTonalButton(
+            onClick = { menu = true }
+        ) {
+            Text("Файл")
+        }
+        DropdownMenu(
+            menu,
+            {menu = false},
+        )
+            {
+                DropdownMenuItem(
+                    { Text("Создать") },
+                    { menu = false },
+                    leadingIcon = { Icon(Icons.Default.Create, "") }
 
+                )
+                DropdownMenuItem(
+                    { Text("Отправить") },
+                    { menu = false },
+                    leadingIcon = { Icon(Icons.Default.Share, "") },
+                )
+                Divider()
+                DropdownMenuItem(
+                    { Text("Выход") },
+                    { menu = false
+                        exit() },
+                    leadingIcon = { Icon(Icons.Default.ExitToApp, "")
+                    }
+                )
+            }
+    }
 }
+
 
 /*
     Тема урока - выпадающее меню. Для работы вам нужна логическая переменная, начальное значение - false

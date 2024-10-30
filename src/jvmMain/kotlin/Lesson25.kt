@@ -1,5 +1,6 @@
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.rememberPagerState
@@ -13,13 +14,32 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import lessons.User
+import org.jetbrains.skia.Image
 import ui.ElevatedCard
 import ui.HorizontalPager
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LessonPager(users: List<User>) {
-
+    HorizontalPager(rememberPagerState { users.size }) {
+        ElevatedCard(Modifier.padding(10.dp)) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                val user = users[it]
+                    Image(
+                        painterResource(R.drawable.u01), "",
+                        modifier = Modifier
+                            .padding(15.dp)
+                            .clip(RoundedCornerShape(10.dp)))
+                Text(
+                    text = "${user.surName} ${user.firstName} ${user.lastName}"
+                )
+                Text(
+                    text = user.position,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(bottom = 10.dp))
+            }
+        }
+    }
 }
 
 /*

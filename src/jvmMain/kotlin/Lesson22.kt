@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import lessons.User
+import org.jetbrains.skia.Image
 import ui.ElevatedCard
 import ui.verticalScroll
 
@@ -24,7 +25,46 @@ private data class User(  // класс "Пользователь", список
 
 @Composable  // users - список пользователей класса User
 fun LessonUsers(users: List<User>) {
-
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+    ) {
+        users.forEach { user ->
+            ElevatedCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(100.dp)
+                        .clickable {},
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Image(
+                        painter = painterResource(user.photo),
+                        contentDescription = "",
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .clip(CircleShape)
+                    )
+                    Column(
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .padding(10.dp),
+                        verticalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Text(text = user.surName)
+                        Text(text = "${user.firstName} ${user.lastName}")
+                        Divider()
+                        Text(text = user.position, color = Color.Gray)
+                    }
+                }
+            }
+        }
+    }
 }
 
 /*

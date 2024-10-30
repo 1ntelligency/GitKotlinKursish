@@ -1,8 +1,5 @@
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -14,8 +11,47 @@ import ui.BackHandler
 
 @Composable
 fun LessonBack() {
+    var file: String? by remember { mutableStateOf(null) }
+    BackHandler(file != null) { file = null }
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(
+            text = "Используйте кнопку возврата на устройстве",
+            modifier = Modifier.padding(4.dp)
+        )
+        file?.let { Image(painter = painterResource(it), "") } ?: Row(modifier = Modifier.fillMaxWidth()) {
+            ElevatedButton(
+                onClick = { file = R.drawable.p1 },
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .padding(3.dp)
+            ) {
+                Image(painter = painterResource(R.drawable.p1), contentDescription = "Яблоко")
+            }
 
-}
+            // Кнопка для груши
+            ElevatedButton(
+                onClick = { file = R.drawable.p2 },
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .padding(3.dp)
+            ) {
+                Image(painter = painterResource(R.drawable.p2), contentDescription = "Груша")
+            }
+            ElevatedButton(
+                onClick = { file = R.drawable.p3 },
+                modifier = Modifier
+                    .weight(1f)
+                    .aspectRatio(1f)
+                    .padding(3.dp)
+            )
+                {
+                    Image(painter = painterResource(R.drawable.p3), contentDescription = "Вишня")
+                }
+            }
+        }
+    }
 
 /*
     Создайте текстовую переменную file, по умолчанию равную null (то есть, ничто, отсутствие какого-либо значения):

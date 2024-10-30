@@ -5,9 +5,17 @@ import androidx.compose.ui.graphics.Color
 
 @Composable   // colors - список (List) из пар (Pair) значений - строки (String) и цвета (Color)
 fun LessonSimple(colors: List<Pair<String, Color>>) {
-
+    listOf("Красный" to Color.Red, "Жёлтый" to Color.Yellow, "Зелёный" to Color.Green, "Бирюзовый" to Color.Cyan,
+        "Синий" to Color.Blue, "Фиолетовый" to Color.Magenta, "Чёрный" to Color.Black, "Тёмный" to Color.DarkGray,
+        "Серый" to Color.Gray, "Светлый" to Color.LightGray)
+    Column {
+    colors.forEach { (name, color) ->
+        Text(
+            text = name,
+            color = color)
+    }
+    }
 }
-
 /*
     colors - список типа listOf( "Белый" to Color.White, "Чёрный" to Color.Black, и т.д. )
     Нужно вывести все названия стандартных цветов из этого списка соответствующим цветом.
